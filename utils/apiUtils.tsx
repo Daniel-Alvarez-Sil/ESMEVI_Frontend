@@ -176,3 +176,29 @@ export async function fetchDioxidoDeCarbonoData() {
   }
   return response.json();
 }
+
+export async function fetchAllData(apiUrl: string): Promise<ApiAllResponse[]> {
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data: ApiAllResponse[] = await response.json();
+    return data.map((item) => ({
+      ...item,
+       // Ensure numeric values
+    }));
+  } catch (error) {
+    console.error(`Error fetching data from ${apiUrl}:`, error);
+    return [];
+  }
+}
+
+export type ApiAllResponse = {
+  id: string;
+  valor: number;
+  fechahora: string;
+  id_componente: string;
+  id_medida: string;
+};
+
