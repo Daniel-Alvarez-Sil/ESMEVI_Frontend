@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { fetchStats, StatsResponse } from "@/utils/apiUtils";
-import TemHumeActual from "@/components/temhume/Actual";
+import CaliAireActual from "@/components/caliaire/Actual";
 
 const TemHumeStats: React.FC = () => {
   const [statsTemperatura, setStatsTemperatura] = useState<StatsResponse | null>(null);
@@ -32,7 +32,7 @@ const TemHumeStats: React.FC = () => {
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <TemHumeActual />
+      <CaliAireActual />
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Promedio</CardTitle>

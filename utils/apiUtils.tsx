@@ -160,3 +160,19 @@ export async function fetchStats(url: string): Promise<StatsResponse | null> {
     return null;
   }
 }
+
+export async function fetchCalidadDeAireData() {
+  const response = await fetch("http://192.168.0.126/apis/calidad_de_aire/getAll.php");
+  if (!response.ok) {
+    throw new Error("Failed to fetch calidad de aire data");
+  }
+  return response.json();
+}
+
+export async function fetchDioxidoDeCarbonoData() {
+  const response = await fetch("http://192.168.0.126/apis/dioxido_de_carbono/getAll.php");
+  if (!response.ok) {
+    throw new Error("Failed to fetch dioxido de carbono data");
+  }
+  return response.json();
+}
