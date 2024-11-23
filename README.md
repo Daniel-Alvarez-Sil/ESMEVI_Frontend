@@ -1,10 +1,10 @@
 ## Cloning the Repository
 1. Open Github Desktop
-2. When you choose your "Local path," the directory you peek, should look something like this \\wsl.localhost\{DISTRO}\home (If you don't see it in the explorer, click on the address bar and paste it) after that you should see the subsystem fs and pick directory from it.
+2. When you choose your "Local path," the directory you peek, should look something like this "\\wsl.localhost\{DISTRO}\home" (If you don't see it in the explorer, click on the address bar and paste it) after that you should see the subsystem fs and pick directory from it.
 
 ![image](https://github.com/user-attachments/assets/5164020a-d8bd-4a95-8335-3393eb0d8125)
 
-3. For this project, the following path is recommended: \\wsl.localhost\Ubuntu\home\{username}\ESMEVI
+3. For this project, the following path is recommended: "\\wsl.localhost\Ubuntu\home\{username}\ESMEVI"
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
