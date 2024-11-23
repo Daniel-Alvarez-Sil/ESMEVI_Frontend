@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, Box, Wind, Thermometer, Guitar, Orbit } from "lucide-react"
 
 import {
   SidebarFooter,
@@ -24,17 +24,17 @@ const items = [
   {
     title: "Temperatura & Humedad",
     url: "/temhume",
-    icon: Inbox,
+    icon: Thermometer,
   },
   {
     title: "Calidad del Aire",
     url: "/caliaire",
-    icon: Calendar,
+    icon: Wind,
   },
   {
     title: "Contaminación Acústica",
     url: "/contacust",
-    icon: Search,
+    icon: Guitar,
   },
   {
     title: "Créditos",
@@ -50,12 +50,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-
+                  <Orbit />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">Documentation</span>
+                  <span className="font-semibold">ESMEVI</span>
                   <span className="">v1.0.0</span>
                 </div>
               </a>
@@ -65,7 +65,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Módulos</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
