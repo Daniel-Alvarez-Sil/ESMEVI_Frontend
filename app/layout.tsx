@@ -13,6 +13,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const parkinsans = localFont({
+  src: "./fonts/Parkinsans-VariableFont_wght.ttf",
+  variable: "--font-parkinsans",
+  weight: "300 900",
+});
 
 // Metadata for the document
 export const metadata: Metadata = {
@@ -28,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sourceSerif.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${sourceSerif.variable} ${geistMono.variable} ${parkinsans.variable} antialiased`}>
         {children}
       </body>
     </html>
