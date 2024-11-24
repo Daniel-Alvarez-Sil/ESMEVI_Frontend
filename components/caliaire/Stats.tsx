@@ -11,20 +11,20 @@ import { fetchStats, StatsResponse } from "@/utils/apiUtils";
 import CaliAireActual from "@/components/caliaire/Actual";
 
 const TemHumeStats: React.FC = () => {
-  const [statsTemperatura, setStatsTemperatura] = useState<StatsResponse | null>(null);
-  const [statsHumedad, setStatsHumedad] = useState<StatsResponse | null>(null);
+  const [statsCalidadDeAire, setStatsCalidadDeAire] = useState<StatsResponse | null>(null);
+  const [statsCO2, setStatsCO2] = useState<StatsResponse | null>(null);
 
   useEffect(() => {
     const fetchAllStats = async () => {
-      const temperaturaStats = await fetchStats(
-        "http://192.168.0.126/apis/temperatura/getStats.php"
+      const CalidadDeAireStats = await fetchStats(
+        "http://192.168.0.126/apis/calidad_de_aire/getStats.php"
       );
-      const humedadStats = await fetchStats(
-        "http://192.168.0.126/apis/humedad/getStats.php"
+      const CO2Stats = await fetchStats(
+        "http://192.168.0.126/apis/dioxido_de_carbono/getStats.php"
       );
 
-      setStatsTemperatura(temperaturaStats);
-      setStatsHumedad(humedadStats);
+      setStatsCalidadDeAire(CalidadDeAireStats);
+      setStatsCO2(CO2Stats);
     };
 
     fetchAllStats();
@@ -40,12 +40,12 @@ const TemHumeStats: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            {statsTemperatura && statsHumedad
-              ? `${statsTemperatura.avg} | ${statsHumedad.avg}`
+            {statsCalidadDeAire && statsCO2
+              ? `${statsCalidadDeAire.avg} | ${statsCO2.avg}`
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Temperatura en °C | Humedad en %
+            Calidad de aire en PPM | CO2 en %
           </p>
         </CardContent>
       </Card>
@@ -56,12 +56,12 @@ const TemHumeStats: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            {statsTemperatura && statsHumedad
-              ? `${statsTemperatura.max} | ${statsHumedad.max}`
+            {statsCalidadDeAire && statsCO2
+              ? `${statsCalidadDeAire.max} | ${statsCO2.max}`
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Temperatura en °C | Humedad en %
+            Calidad de aire en PPM | CO2 en %
           </p>
         </CardContent>
       </Card>
@@ -72,12 +72,12 @@ const TemHumeStats: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            {statsTemperatura && statsHumedad
-              ? `${statsTemperatura.min} | ${statsHumedad.min}`
+            {statsCalidadDeAire && statsCO2
+              ? `${statsCalidadDeAire.min} | ${statsCO2.min}`
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Temperatura en °C | Humedad en %
+            Calidad de aire en PPM | CO2 en %
           </p>
         </CardContent>
       </Card>

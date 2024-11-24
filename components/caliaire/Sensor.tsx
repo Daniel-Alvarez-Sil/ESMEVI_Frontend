@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/card";
 import { fetchSensors } from "@/utils/apiUtils";
 
-const TemHumeSensor: React.FC = () => {
+const CaliAireSensor: React.FC = () => {
   const [sensors, setSensors] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchAndSetSensors = async () => {
       const sensorData = await fetchSensors(
-        "http://192.168.0.126/apis/temperatura/getSensores.php"
+        "http://192.168.0.126/apis/dioxido_de carbono/getSensores.php"
       );
       setSensors(sensorData);
     };
@@ -57,4 +57,4 @@ const TemHumeSensor: React.FC = () => {
   );
 };
 
-export default TemHumeSensor;
+export default CaliAireSensor;

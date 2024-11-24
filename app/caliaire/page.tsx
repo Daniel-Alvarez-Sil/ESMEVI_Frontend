@@ -24,7 +24,7 @@ import {
 
 import TemHumeChart from "@/components/temhume/TemHumeChart"
 import Stats from "@/components/caliaire/Stats"
-import TemHumeSensor from "@/components/temhume/Sensor"
+import CaliAireSensor from "@/components/caliaire/Sensor"
 import TemHumeWithDate from "@/components/temhume/WithDate"
 import { CaliAireChart } from "@/components/caliaire/CaliAireChart"
 
@@ -83,7 +83,7 @@ export default function Page() {
               <Stats/>
               <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-4">
                 <CaliAireChart/>
-                <TemHumeSensor/>
+                <CaliAireSensor/>
               </div>
             </div>
           </TabsContent>

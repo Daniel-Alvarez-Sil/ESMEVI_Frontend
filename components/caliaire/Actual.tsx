@@ -10,18 +10,18 @@ import {
 import { fetchActualData } from "@/utils/apiUtils";
 
 const TemHumeActual: React.FC = () => {
-  const [actualTemperatura, setActualTemperatura] = useState<string>("Loading...");
-  const [actualHumedad, setActualHumedad] = useState<string>("Loading...");
+  const [actualTemperatura, setActualCalidadDeAire] = useState<string>("Loading...");
+  const [actualHumedad, setActualCO2] = useState<string>("Loading...");
 
   useEffect(() => {
     // Fetch actual data for temperatura
     fetchActualData("http://192.168.0.126/apis/calidad_de_aire/getActual.php").then(
-      (data) => setActualTemperatura(data ?? "No data")
+      (data) => setActualCalidadDeAire(data ?? "No data")
     );
 
     // Fetch actual data for humedad
     fetchActualData("http://192.168.0.126/apis/dioxido_de_carbono/getActual.php").then(
-      (data) => setActualHumedad(data ?? "No data")
+      (data) => setActualCO2(data ?? "No data")
     );
   }, []);
 
@@ -50,7 +50,7 @@ const TemHumeActual: React.FC = () => {
           {actualTemperatura} | {actualHumedad}
         </div>
         <p className="text-xs text-muted-foreground">
-          Temperatura en °C | Humedad en %
+          Calidad de aire en PPM | CO2 en %
         </p>
       </CardContent>
     </Card>
