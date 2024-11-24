@@ -23,7 +23,7 @@ import {
 const chartConfig = {
   acousticContamination: {
     label: "Contaminación Acústica",
-    color: "hsl(var(--chart-1))",
+    color: "#1d3557",
   },
 } satisfies ChartConfig;
 
