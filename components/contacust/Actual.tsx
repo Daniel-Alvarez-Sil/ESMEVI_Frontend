@@ -1,5 +1,5 @@
 "use client";
-import { Radio } from "lucide-react"
+
 import React, { useEffect, useState } from "react";
 import {
   Card,
@@ -9,19 +9,13 @@ import {
 } from "@/components/ui/card";
 import { fetchActualData } from "@/utils/apiUtils";
 
-const TemHumeActual: React.FC = () => {
-  const [actualTemperatura, setActualTemperatura] = useState<string>("Loading...");
-  const [actualHumedad, setActualHumedad] = useState<string>("Loading...");
+const ContAcustActual: React.FC = () => {
+  const [actualContAcust, setActualContAcust] = useState<string>("Loading...");
 
   useEffect(() => {
     // Fetch actual data for temperatura
-    fetchActualData("http://192.168.0.126/apis/temperatura/getActual.php").then(
-      (data) => setActualTemperatura(data ?? "No data")
-    );
-
-    // Fetch actual data for humedad
-    fetchActualData("http://192.168.0.126/apis/humedad/getActual.php").then(
-      (data) => setActualHumedad(data ?? "No data")
+    fetchActualData("http://192.168.0.126/apis/contaminacion_acustica/getActual.php").then(
+      (data) => setActualContAcust(data ?? "No data")
     );
   }, []);
 
@@ -47,14 +41,14 @@ const TemHumeActual: React.FC = () => {
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">
-          {actualTemperatura} | {actualHumedad}
+          {actualContAcust}
         </div>
         <p className="text-xs text-muted-foreground">
-          Temperatura en °C | Humedad en %
+          Contaminación Acústica en dB
         </p>
       </CardContent>
     </Card>
   );
 };
 
-export default TemHumeActual;
+export default ContAcustActual;

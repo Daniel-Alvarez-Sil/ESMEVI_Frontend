@@ -9,13 +9,13 @@ import {
 } from "@/components/ui/card";
 import { fetchSensors } from "@/utils/apiUtils";
 
-const TemHumeSensor: React.FC = () => {
+const ContAcustSensor: React.FC = () => {
   const [sensors, setSensors] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchAndSetSensors = async () => {
       const sensorData = await fetchSensors(
-        "http://192.168.0.126/apis/temperatura/getSensores.php"
+        "http://192.168.0.126/apis/contaminacion_acustica/getSensores.php"
       );
       setSensors(sensorData);
     };
@@ -34,7 +34,7 @@ const TemHumeSensor: React.FC = () => {
           <p className="text-xs text-muted-foreground pb-2">
             Componentes utilizados para medir.
           </p>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+          <div className={`grid gap-4 ${sensors.length === 1 ? "grid-cols-1" : "md:grid-cols-2 lg:grid-cols-2"}`}>
             {sensors.length > 0 ? (
               sensors.map((sensor, index) => (
                 <Card key={index}>
@@ -57,4 +57,4 @@ const TemHumeSensor: React.FC = () => {
   );
 };
 
-export default TemHumeSensor;
+export default ContAcustSensor;

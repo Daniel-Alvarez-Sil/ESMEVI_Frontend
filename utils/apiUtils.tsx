@@ -202,3 +202,10 @@ export type ApiAllResponse = {
   id_medida: string;
 };
 
+export async function fetchContaminacionAcusticaData() {
+  const response = await fetch("http://192.168.0.126/apis/contaminacion_acustica/getAll.php");
+  if (!response.ok) {
+    throw new Error("Failed to fetch contaminación acústica data");
+  }
+  return response.json();
+}

@@ -8,23 +8,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { fetchStats, StatsResponse } from "@/utils/apiUtils";
-import TemHumeActual from "@/components/temhume/Actual";
+import ContAcustActual from "@/components/contacust/Actual";
 
-const TemHumeStats: React.FC = () => {
-  const [statsTemperatura, setStatsTemperatura] = useState<StatsResponse | null>(null);
-  const [statsHumedad, setStatsHumedad] = useState<StatsResponse | null>(null);
+const ContAcustStats: React.FC = () => {
+  const [statsContAcust, setStatsContAcust] = useState<StatsResponse | null>(null);
 
   useEffect(() => {
     const fetchAllStats = async () => {
-      const temperaturaStats = await fetchStats(
-        "http://192.168.0.126/apis/temperatura/getStats.php"
-      );
-      const humedadStats = await fetchStats(
-        "http://192.168.0.126/apis/humedad/getStats.php"
+      const contacustStats = await fetchStats(
+        "http://192.168.0.126/apis/contaminacion_acustica/getStats.php"
       );
 
-      setStatsTemperatura(temperaturaStats);
-      setStatsHumedad(humedadStats);
+      setStatsContAcust(contacustStats);
     };
 
     fetchAllStats();
@@ -32,7 +27,7 @@ const TemHumeStats: React.FC = () => {
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-      <TemHumeActual />
+      <ContAcustActual />
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">Promedio</CardTitle>
@@ -40,12 +35,12 @@ const TemHumeStats: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            {statsTemperatura && statsHumedad
-              ? `${statsTemperatura.avg} | ${statsHumedad.avg}`
+            {statsContAcust
+              ? `${statsContAcust.avg}`
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Temperatura en °C | Humedad en %
+            Contaminación Acústica en dB
           </p>
         </CardContent>
       </Card>
@@ -56,12 +51,12 @@ const TemHumeStats: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            {statsTemperatura && statsHumedad
-              ? `${statsTemperatura.max} | ${statsHumedad.max}`
+            {statsContAcust
+              ? `${statsContAcust.max}`
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Temperatura en °C | Humedad en %
+            Contaminación Acústica en dB
           </p>
         </CardContent>
       </Card>
@@ -72,12 +67,12 @@ const TemHumeStats: React.FC = () => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            {statsTemperatura && statsHumedad
-              ? `${statsTemperatura.min} | ${statsHumedad.min}`
+            {statsContAcust
+              ? `${statsContAcust.min}`
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Temperatura en °C | Humedad en %
+            Contaminación Acústica en dB
           </p>
         </CardContent>
       </Card>
@@ -85,4 +80,4 @@ const TemHumeStats: React.FC = () => {
   );
 };
 
-export default TemHumeStats;
+export default ContAcustStats;
