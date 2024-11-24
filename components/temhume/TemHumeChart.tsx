@@ -39,11 +39,11 @@ const chartConfig = {
   },
   desktop: {
     label: "Humedad (%)",
-    color: "hsl(var(--chart-1))",
+    color: "#add8e6",
   },
   mobile: {
     label: "Temperatura (°C)",
-    color: "hsl(var(--chart-2))",
+    color: "#a8dadc",
   },
 } satisfies ChartConfig;
 

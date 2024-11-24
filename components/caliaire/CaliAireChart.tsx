@@ -23,11 +23,11 @@ import {
 const chartConfig = {
   calidadDeAire: {
     label: "Calidad de Aire",
-    color: "hsl(var(--chart-1))",
+    color: "#8fbdd3",
   },
   dioxidoDeCarbono: {
     label: "Dióxido de Carbono",
-    color: "hsl(var(--chart-2))",
+    color: "#457b9d",
   },
 } satisfies ChartConfig;
 
