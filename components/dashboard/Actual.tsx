@@ -14,26 +14,31 @@ const API_CONFIG = [
     url: "http://192.168.0.126/apis/temperatura/getActual.php",
     label: "Temperatura",
     unit: "°C",
+    color: "#a8dadc", // Example color for Temperatura
   },
   {
     url: "http://192.168.0.126/apis/humedad/getActual.php",
     label: "Humedad",
     unit: "%",
+    color: "#add8e6", // Example color for Humedad
   },
   {
     url: "http://192.168.0.126/apis/calidad_de_aire/getActual.php",
     label: "Calidad del Aire",
     unit: "ppm",
+    color: "#8fbdd3", // Example color for Calidad del Aire
   },
   {
     url: "http://192.168.0.126/apis/dioxido_de_carbono/getActual.php",
     label: "Dióxido de Carbono",
     unit: "ppm",
+    color: "#457b9d", // Example color for Dióxido de Carbono
   },
   {
     url: "http://192.168.0.126/apis/contaminacion_acustica/getActual.php",
     label: "Contaminación Acústica",
     unit: "dB",
+    color: "#1d3557", // Example color for Contaminación Acústica
   },
 ];
 
@@ -65,7 +70,7 @@ const ActualDataCards: React.FC = () => {
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#8fbdd3"
+              stroke={api.color} // Dynamic stroke color
               strokeWidth="1.75"
               strokeLinecap="round"
               strokeLinejoin="round"
