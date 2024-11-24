@@ -22,11 +22,11 @@ import { fetchAllData, ApiAllResponse } from "@/utils/apiUtils";
 
 // Chart colors for each API
 const chartColors: { [key: string]: string } = {
-  Temperatura: "black",
-  Humedad: "green",
-  "Calidad del Aire": "navy",
-  "Dióxido de Carbono": "orange",
-  "Contaminación Acústica": "purple",
+  Temperatura: "#a8dadc",
+  Humedad: "#add8e6",
+  "Calidad del Aire": "#8fbdd3",
+  "Dióxido de Carbono": "#457b9d",
+  "Contaminación Acústica": "#1d3557"
 };
 
 // API URLs with labels
