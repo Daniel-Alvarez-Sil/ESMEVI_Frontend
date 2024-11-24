@@ -15,7 +15,7 @@ const CaliAireSensor: React.FC = () => {
   useEffect(() => {
     const fetchAndSetSensors = async () => {
       const sensorData = await fetchSensors(
-        "http://192.168.0.126/apis/dioxido_de carbono/getSensores.php"
+        "http://192.168.0.126/apis/dioxido_de_carbono/getSensores.php"
       );
       setSensors(sensorData);
     };

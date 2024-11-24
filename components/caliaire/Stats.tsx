@@ -45,7 +45,7 @@ const TemHumeStats: React.FC = () => {
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Calidad de aire en PPM | CO2 en %
+            Calidad de aire en PPM | CO2 en PPM
           </p>
         </CardContent>
       </Card>
@@ -61,7 +61,7 @@ const TemHumeStats: React.FC = () => {
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Calidad de aire en PPM | CO2 en %
+            Calidad de aire en PPM | CO2 en PPM
           </p>
         </CardContent>
       </Card>
@@ -77,7 +77,7 @@ const TemHumeStats: React.FC = () => {
               : "Loading..."}
           </div>
           <p className="text-xs text-muted-foreground">
-            Calidad de aire en PPM | CO2 en %
+            Calidad de aire en PPM | CO2 en PPM
           </p>
         </CardContent>
       </Card>
