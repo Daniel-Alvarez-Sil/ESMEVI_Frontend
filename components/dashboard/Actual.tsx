@@ -65,7 +65,7 @@ const ActualDataCards: React.FC = () => {
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#dd1313"
+              stroke="#8fbdd3"
               strokeWidth="1.75"
               strokeLinecap="round"
               strokeLinejoin="round"
