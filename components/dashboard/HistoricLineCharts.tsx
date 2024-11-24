@@ -96,7 +96,7 @@ const GraphComponentWithLines: React.FC = () => {
                 <LineChart
                   data={data.map((item) => ({
                     date: new Date(item.fechahora).toISOString(), // Retain full ISO string
-                    valor: parseFloat(item.valor.toString()),
+                    valor: parseFloat(item.valor.toString()).toFixed(2),
                   }))}
                   margin={{
                     top: 20,
