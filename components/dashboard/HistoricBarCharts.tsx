@@ -94,7 +94,7 @@ const GraphComponent: React.FC = () => {
                 >
                     <BarChart
                     data={data.map((item) => ({
-                        date: new Date(item.fechahora).toISOString().split("T")[0],
+                        date: new Date(item.fechahora).toISOString(),
                         valor: parseFloat(item.valor.toString()).toFixed(2),
                     }))}
                     margin={{

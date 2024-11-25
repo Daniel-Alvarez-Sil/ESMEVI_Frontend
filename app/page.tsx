@@ -25,6 +25,9 @@ import {
 import Actual from "@/components/dashboard/Actual"
 import HistoricBarCharts from "@/components/dashboard/HistoricBarCharts"
 import HistoricLineCharts from "@/components/dashboard/HistoricLineCharts"
+import AllLineChart from '@/components/dashboard/AllLineChart'
+import TemCount from '@/components/dashboard/TemCount'
+import CountCircleGraphs from '@/components/dashboard/CountCircleGraphs'
 
 export default function Page() {
   return (
@@ -56,7 +59,10 @@ export default function Page() {
                 </h1>
             </div> 
           </div>
+          {/* <TemCount/> */}
           <Actual/>
+          <AllLineChart/>
+          <CountCircleGraphs/>
           
         <Tabs defaultValue="line" className="space-y-4">
           <div className="p-3 flex items-center justify-between space-y-2 max-h-screen font-[family-name:var(--font-source-serif)] text-custom-color text-black sm:text-5xl">

@@ -209,3 +209,25 @@ export async function fetchContaminacionAcusticaData() {
   }
   return response.json();
 }
+
+// utils/apiUtils.tsx
+
+export type CountDataResponse = {
+  rounded_value: string;
+  count: number;
+};
+
+// Fetch data for any given API
+export async function fetchCountData(url: string): Promise<CountDataResponse[]> {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data from ${url}`);
+    }
+    const data: CountDataResponse[] = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error fetching count data from ${url}:`, error);
+    return [];
+  }
+}
