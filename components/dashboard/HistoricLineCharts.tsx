@@ -36,19 +36,19 @@ const apiUrls = [
     label: "Temperatura",
   },
   {
-    url: "http://192.168.0.126/apis/humedad/getAll.php",
+    url: "http://192.168.0.126/apis/humedad/getDayAll.php",
     label: "Humedad",
   },
   {
-    url: "http://192.168.0.126/apis/calidad_de_aire/getAll.php",
+    url: "http://192.168.0.126/apis/calidad_de_aire/getDayAll.php",
     label: "Calidad del Aire",
   },
   {
-    url: "http://192.168.0.126/apis/dioxido_de_carbono/getAll.php",
+    url: "http://192.168.0.126/apis/dioxido_de_carbono/getDayAll.php",
     label: "Dióxido de Carbono",
   },
   {
-    url: "http://192.168.0.126/apis/contaminacion_acustica/getAll.php",
+    url: "http://192.168.0.126/apis/contaminacion_acustica/getDayAll.php",
     label: "Contaminación Acústica",
   },
 ];
