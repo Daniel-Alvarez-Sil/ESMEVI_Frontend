@@ -9,7 +9,7 @@ const teamMembers = [
   {
     name: "Yael",
     title: "Senior Developer",
-    image: "/yaelsilclutch.jpeg",
+    image: "/yaelclutch.jpg",
   },
 ];
 
