@@ -22,11 +22,18 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 
-import TemHumeChart from "@/components/temhume/TemHumeChart"
+import CaliBarChart from "@/components/caliaire/CaliBarChart"
 import Stats from "@/components/caliaire/Stats"
 import CaliAireSensor from "@/components/caliaire/Sensor"
-import TemHumeWithDate from "@/components/temhume/WithDate"
-import { CaliAireChart } from "@/components/caliaire/CaliAireChart"
+import CaliAreaChart from "@/components/caliaire/CaliAreaChart"
+import CaliAireChart from "@/components/caliaire/CaliAireChart"
+import CaliLineChart from "@/components/caliaire/CaliLineChart"
+import CO2Areachart from "@/components/caliaire/CO2AreaChart"
+import CO2BarChart from "@/components/caliaire/CO2BarChart"
+import CO2LineChart from "@/components/caliaire/CO2LineChart"
+
+
+
 
 export default function Page() {
   return (
@@ -82,14 +89,26 @@ export default function Page() {
             <div className="flex flex-1 flex-col gap-4 p-4">       
               <Stats/>
               <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-4">
-                <CaliAireChart/>
+                <CaliAreaChart/>
+                <div className="pt-2 grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+                  <CaliBarChart/>
+                  <CaliLineChart/>
+                </div>
+
+                <CO2Areachart/>
+                <div className="pt-2 grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+                  <CO2BarChart/>
+                  <CO2LineChart/>
+                </div>
                 <CaliAireSensor/>
               </div>
             </div>
           </TabsContent>
 
           <TabsContent value="with-date" className="space-y-4">
-            <TemHumeWithDate/>
+            <div className="flex flex-1 flex-col gap-4 p-4">       
+
+              <CaliAireChart/>
             {/* <div className="flex flex-1 flex-col gap-4 p-4">   
               <CalendarDateRangePicker />    
               <TempStats/>
@@ -98,6 +117,7 @@ export default function Page() {
                 <Sensor/>
               </div>
             </div> */}
+            </div>
           </TabsContent>
         </Tabs>
         

@@ -26,8 +26,8 @@ import { fetchAllData, ApiAllResponse } from "@/utils/apiUtils";
 // Chart configuration
 const chartConfig = {
   temperatura: {
-    label: "Temperatura (°C)  ",
-    color: "#a8dadc",
+    label: "Calidad de Aire (PPM)",
+    color: "#8fbdd3",
   },
 } satisfies ChartConfig;
 
@@ -39,7 +39,7 @@ const TemperaturaGraph: React.FC = () => {
     const fetchTemperaturaData = async () => {
       try {
         const data: ApiAllResponse[] = await fetchAllData(
-          "http://192.168.0.126/apis/temperatura/getAll.php"
+          "http://192.168.0.126/apis/calidad_de_aire/getAll.php"
         );
         const formattedData = data.map((item) => ({
           date: new Date(item.fechahora).toISOString(), // Format date
@@ -58,9 +58,9 @@ const TemperaturaGraph: React.FC = () => {
     // <div className="pt-2 pb-2 grid gap-4 md:grid-cols-2 lg:grid-cols-1">
         <Card>
         <CardHeader>
-            <CardTitle>Área de Temperatura</CardTitle>
+            <CardTitle>Área de Calidad de Aire</CardTitle>
             <CardDescription>
-            Visualización de los registros de temperatura.
+            Visualización de los registros de calidad de aire.
             </CardDescription>
         </CardHeader>
         <CardContent>
@@ -107,7 +107,7 @@ const TemperaturaGraph: React.FC = () => {
                 Información en Tiempo Real <TrendingUp className="h-4 w-4" />
                 </div>
                 <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                Registros recientes de temperatura
+                Registros recientes de calidad de aire
                 </div>
             </div>
             </div>

@@ -1,14 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { CartesianGrid, LabelList, Line, LineChart, XAxis } from "recharts";
+import { TrendingUp } from "lucide-react";
 
 import {
   Card,
   CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from "@/components/ui/card";
 import {
   ChartConfig,
@@ -19,15 +21,15 @@ import {
 import { fetchAllData, ApiAllResponse } from "@/utils/apiUtils";
 
 // Chart color for Temperatura
-const chartColor = "#add8e6";
+const chartColor = "#457b9d";
 
 // API URL for Temperatura
 const temperaturaApi = {
-  url: "http://192.168.0.126/apis/humedad/getDayAll.php",
-  label: "Humedad",
+  url: "http://192.168.0.126/apis/dioxido_de_carbono/getDayAll.php",
+  label: "CO2",
 };
 
-const TemperaturaGraphComponent: React.FC = () => {
+const CO2Graph: React.FC = () => {
   const [temperaturaData, setTemperaturaData] = useState<ApiAllResponse[]>([]);
 
   useEffect(() => {
@@ -42,31 +44,28 @@ const TemperaturaGraphComponent: React.FC = () => {
   return (
     <div className="pt-2 pb-2 grid gap-4 md:grid-cols-1 lg:grid-cols-1">
         <Card>
-        <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
-            <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-            <CardTitle>Gráfico de Barras | Humedad</CardTitle>
-            <CardDescription>
-                Visualización de los valores de humedad registrados por el módulo ESMEVI.
-            </CardDescription>
-            </div>
+        <CardHeader>
+            <CardTitle>Gráfico de Líneas | CO2</CardTitle>
+            {/* <CardDescription>
+            Visualización de los valores de temperatura registrados por el módulo ESMEVI.
+            </CardDescription> */}
         </CardHeader>
         <CardContent>
             <ChartContainer
             config={{
-                views: { label: "Values" },
-                valor: {
-                label: "Humedad",
+                [temperaturaApi.label]: {
+                label: temperaturaApi.label,
                 color: chartColor,
                 },
-            }} // Provide the required config prop
-            className="aspect-auto h-[250px] w-full"
+            }}
             >
-            <BarChart
+            <LineChart
                 data={temperaturaData.map((item) => ({
-                date: new Date(item.fechahora).toISOString(), 
-                valor: item.valor,
+                date: new Date(item.fechahora).toISOString(), // Retain full ISO string
+                valor: parseFloat(item.valor.toString()).toFixed(2),
                 }))}
                 margin={{
+                top: 20,
                 left: 12,
                 right: 12,
                 }}
@@ -77,7 +76,6 @@ const TemperaturaGraphComponent: React.FC = () => {
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
-                minTickGap={32}
                 tickFormatter={(value) =>
                     new Date(value).toLocaleDateString("en-US", {
                     month: "short",
@@ -86,10 +84,10 @@ const TemperaturaGraphComponent: React.FC = () => {
                 }
                 />
                 <ChartTooltip
+                cursor={false}
                 content={
                     <ChartTooltipContent
-                    className="w-[150px]"
-                    nameKey="valor"
+                    indicator="line"
                     labelFormatter={(value) =>
                         new Date(value).toLocaleDateString("en-US", {
                         month: "short",
@@ -100,13 +98,39 @@ const TemperaturaGraphComponent: React.FC = () => {
                     />
                 }
                 />
-                <Bar dataKey="valor" fill={chartColor} barSize={20} />
-            </BarChart>
+                <Line
+                dataKey="valor"
+                type="natural"
+                stroke={chartColor}
+                strokeWidth={2}
+                dot={{
+                    fill: chartColor,
+                }}
+                activeDot={{
+                    r: 6,
+                }}
+                >
+                <LabelList
+                    position="top"
+                    offset={12}
+                    className="fill-foreground"
+                    fontSize={12}
+                />
+                </Line>
+            </LineChart>
             </ChartContainer>
         </CardContent>
+        <CardFooter className="flex-col items-start gap-2 text-sm">
+            <div className="flex gap-2 font-medium leading-none">
+            Datos por día <TrendingUp className="h-4 w-4" />
+            </div>
+            <div className="leading-none text-muted-foreground">
+            Visualizando los datos a través del tiempo para {temperaturaApi.label}
+            </div>
+        </CardFooter>
         </Card>
     </div>
   );
 };
 
-export default TemperaturaGraphComponent;
+export default CO2Graph;

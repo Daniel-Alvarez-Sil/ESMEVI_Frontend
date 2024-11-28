@@ -98,14 +98,14 @@ export default function Page() {
                   <HumeBarChart/>
                   <HumeLineChart/>
                 </div>
-                <TemHumeChart/>
                 <TemHumeSensor/>
               </div>
             </div>
           </TabsContent>
 
           <TabsContent value="with-date" className="space-y-4">
-            <TemHumeWithDate/>
+            <div className="flex flex-1 flex-col gap-4 p-4">       
+              <TemHumeChart/>
             {/* <div className="flex flex-1 flex-col gap-4 p-4">   
               <CalendarDateRangePicker />    
               <TempStats/>
@@ -114,6 +114,7 @@ export default function Page() {
                 <Sensor/>
               </div>
             </div> */}
+            </div>
           </TabsContent>
         </Tabs>
         

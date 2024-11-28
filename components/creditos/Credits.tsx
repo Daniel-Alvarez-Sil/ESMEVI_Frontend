@@ -3,7 +3,7 @@ import React from "react";
 const teamMembers = [
   {
     name: "Dany",
-    title: "Proyect Manager",
+    title: "Project Manager",
     image: "/danyclutch.jpeg",
   },
   {

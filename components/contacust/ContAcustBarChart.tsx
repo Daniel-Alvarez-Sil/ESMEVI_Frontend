@@ -19,21 +19,21 @@ import {
 import { fetchAllData, ApiAllResponse } from "@/utils/apiUtils";
 
 // Chart color for Temperatura
-const chartColor = "#add8e6";
+const chartColor = "#1d3557";
 
 // API URL for Temperatura
 const temperaturaApi = {
-  url: "http://192.168.0.126/apis/humedad/getDayAll.php",
-  label: "Humedad",
+  url: "http://192.168.0.126/apis/contaminacion_acustica/getDayAll.php",
+  label: "Contaminación Acústica",
 };
 
-const TemperaturaGraphComponent: React.FC = () => {
-  const [temperaturaData, setTemperaturaData] = useState<ApiAllResponse[]>([]);
+const CO2GraphComponent: React.FC = () => {
+  const [CO2Data, setCO2Data] = useState<ApiAllResponse[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchAllData(temperaturaApi.url);
-      setTemperaturaData(data);
+      setCO2Data(data);
     };
 
     fetchData();
@@ -44,9 +44,9 @@ const TemperaturaGraphComponent: React.FC = () => {
         <Card>
         <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
             <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-            <CardTitle>Gráfico de Barras | Humedad</CardTitle>
+            <CardTitle>Gráfico de Barras | Contaminación Acústica</CardTitle>
             <CardDescription>
-                Visualización de los valores de humedad registrados por el módulo ESMEVI.
+                Visualización de los valores de contaminación acústica registrados por el módulo ESMEVI.
             </CardDescription>
             </div>
         </CardHeader>
@@ -55,15 +55,15 @@ const TemperaturaGraphComponent: React.FC = () => {
             config={{
                 views: { label: "Values" },
                 valor: {
-                label: "Humedad",
+                label: "Contaminación Acústica",
                 color: chartColor,
                 },
             }} // Provide the required config prop
             className="aspect-auto h-[250px] w-full"
             >
             <BarChart
-                data={temperaturaData.map((item) => ({
-                date: new Date(item.fechahora).toISOString(), 
+                data={CO2Data.map((item) => ({
+                date: new Date(item.fechahora).toISOString().split("T")[0],
                 valor: item.valor,
                 }))}
                 margin={{
@@ -109,4 +109,4 @@ const TemperaturaGraphComponent: React.FC = () => {
   );
 };
 
-export default TemperaturaGraphComponent;
+export default CO2GraphComponent;

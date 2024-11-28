@@ -18,14 +18,14 @@ const API_CONFIG = [
     color: "#a8dadc",
     min: 0,
     max: 50,
-    greenRange: [15, 26], // Tuple of two numbers
+    greenRange: [15.0, 26.9], // Tuple of two numbers
     yellowRange: [
-      [5, 14], // First yellow range
-      [27, 31], // Second yellow range
+      [5.0, 14.9], // First yellow range
+      [27.0, 31.9], // Second yellow range
     ],
     redRange: [
-      [0, 4], // First red range
-      [32, 50], // Second red range
+      [0.0, 4.9], // First red range
+      [32.0, 50.0], // Second red range
     ],
   },
   {
@@ -50,18 +50,51 @@ const API_CONFIG = [
     label: "Calidad del Aire",
     unit: "ppm",
     color: "#8fbdd3", // Example color for Calidad del Aire
+    min: 0,
+    max: 1000,
+    greenRange: [0, 100], // Tuple of two numbers
+    yellowRange: [
+      [101, 200],
+      [101, 200],
+    ],
+    redRange: [
+      [201, 1000],
+      [201, 1000],
+    ],
   },
   {
     url: "http://192.168.0.126/apis/dioxido_de_carbono/getActual.php",
     label: "Dióxido de Carbono",
     unit: "ppm",
     color: "#457b9d", // Example color for Dióxido de Carbono
+    min: 0,
+    max: 10000,
+    greenRange: [0, 1000], // Tuple of two numbers
+    yellowRange: [
+      [1001, 5000],
+      [1001, 5000],
+    ],
+    redRange: [
+      [5001, 10000],
+      [5001, 10000],
+    ],
   },
   {
     url: "http://192.168.0.126/apis/contaminacion_acustica/getActual.php",
     label: "Contaminación Acústica",
     unit: "dB",
     color: "#1d3557", // Example color for Contaminación Acústica
+    min: 0,
+    max: 100,
+    greenRange: [0, 30], // Tuple of two numbers
+    yellowRange: [
+      [31, 63],
+      [31, 63],
+    ],
+    redRange: [
+      [64, 100],
+      [64, 100],
+    ],
   },
 ];
 

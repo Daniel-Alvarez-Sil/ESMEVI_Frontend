@@ -18,21 +18,21 @@ import {
 } from "@/components/ui/chart";
 import { fetchAllData, ApiAllResponse } from "@/utils/apiUtils";
 
-// Chart color for Temperatura
-const chartColor = "#add8e6";
+// Chart color for Calidad de Aire
+const chartColor = "#8fbdd3";
 
-// API URL for Temperatura
-const temperaturaApi = {
-  url: "http://192.168.0.126/apis/humedad/getDayAll.php",
-  label: "Humedad",
+// API URL for Calidad de Aire
+const calidadDeAireApi = {
+  url: "http://192.168.0.126/apis/calidad_de_aire/getDayAll.php",
+  label: "Calidad de Aire",
 };
 
-const TemperaturaGraphComponent: React.FC = () => {
-  const [temperaturaData, setTemperaturaData] = useState<ApiAllResponse[]>([]);
+const CalidadDeAireGraphComponent: React.FC = () => {
+  const [calidadDeAireData, setTemperaturaData] = useState<ApiAllResponse[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchAllData(temperaturaApi.url);
+      const data = await fetchAllData(calidadDeAireApi.url);
       setTemperaturaData(data);
     };
 
@@ -44,9 +44,9 @@ const TemperaturaGraphComponent: React.FC = () => {
         <Card>
         <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
             <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-            <CardTitle>Gráfico de Barras | Humedad</CardTitle>
+            <CardTitle>Gráfico de Barras | Calidad de Aire</CardTitle>
             <CardDescription>
-                Visualización de los valores de humedad registrados por el módulo ESMEVI.
+                Visualización de los valores de calidad de aire registrados por el módulo ESMEVI.
             </CardDescription>
             </div>
         </CardHeader>
@@ -55,15 +55,15 @@ const TemperaturaGraphComponent: React.FC = () => {
             config={{
                 views: { label: "Values" },
                 valor: {
-                label: "Humedad",
+                label: "Calidad de Aire",
                 color: chartColor,
                 },
             }} // Provide the required config prop
             className="aspect-auto h-[250px] w-full"
             >
             <BarChart
-                data={temperaturaData.map((item) => ({
-                date: new Date(item.fechahora).toISOString(), 
+                data={calidadDeAireData.map((item) => ({
+                date: new Date(item.fechahora).toISOString(),
                 valor: item.valor,
                 }))}
                 margin={{
@@ -109,4 +109,4 @@ const TemperaturaGraphComponent: React.FC = () => {
   );
 };
 
-export default TemperaturaGraphComponent;
+export default CalidadDeAireGraphComponent;

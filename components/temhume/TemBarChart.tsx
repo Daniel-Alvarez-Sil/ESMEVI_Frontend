@@ -63,7 +63,7 @@ const TemperaturaGraphComponent: React.FC = () => {
             >
             <BarChart
                 data={temperaturaData.map((item) => ({
-                date: new Date(item.fechahora).toISOString().split("T")[0],
+                date: new Date(item.fechahora).toISOString(),
                 valor: item.valor,
                 }))}
                 margin={{

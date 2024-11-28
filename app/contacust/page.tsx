@@ -22,7 +22,10 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 
-import {ContAcustChart} from "@/components/contacust/ContAcustChart"
+import ContAcustChart from "@/components/contacust/ContAcustChart"
+import ContAcustAreaChart from "@/components/contacust/ContAcustAreaChart"
+import ContAcustBarChart from "@/components/contacust/ContAcustBarChart"
+import ContAcustLineChart from "@/components/contacust/ContAcustLineChart"
 import Stats from "@/components/contacust/Stats"
 import Sensor from "@/components/contacust/Sensor"
 import TemHumeWithDate from "@/components/temhume/WithDate"
@@ -81,22 +84,29 @@ export default function Page() {
             <div className="flex flex-1 flex-col gap-4 p-4">       
               <Stats/>
               <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-4">
-                <ContAcustChart/>
+                <ContAcustAreaChart/>
+                <div className="pt-2 grid gap-4 md:grid-cols-2 lg:grid-cols-2">
+                  <ContAcustBarChart/>
+                  <ContAcustLineChart/>
+                </div>
                 <Sensor/>
               </div>
+
             </div>
           </TabsContent>
 
           <TabsContent value="with-date" className="space-y-4">
-            <TemHumeWithDate/>
-            {/* <div className="flex flex-1 flex-col gap-4 p-4">   
-              <CalendarDateRangePicker />    
-              <TempStats/>
-              <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-4">
-                <TempChart/>
-                <Sensor/>
-              </div>
-            </div> */}
+            <div className="flex flex-1 flex-col gap-4 p-4">       
+              <ContAcustChart/>
+              {/* <div className="flex flex-1 flex-col gap-4 p-4">   
+                <CalendarDateRangePicker />    
+                <TempStats/>
+                <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-4">
+                  <TempChart/>
+                  <Sensor/>
+                </div>
+              </div> */}
+            </div>
           </TabsContent>
         </Tabs>
         

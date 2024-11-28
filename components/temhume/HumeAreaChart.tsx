@@ -42,7 +42,7 @@ const TemperaturaGraph: React.FC = () => {
           "http://192.168.0.126/apis/humedad/getAll.php"
         );
         const formattedData = data.map((item) => ({
-          date: new Date(item.fechahora).toISOString().split("T")[0], // Format date
+          date: new Date(item.fechahora).toISOString(), // Format date
           temperatura: item.valor, // Parse and fix to 2 decimals
         }));
         setChartData(formattedData);

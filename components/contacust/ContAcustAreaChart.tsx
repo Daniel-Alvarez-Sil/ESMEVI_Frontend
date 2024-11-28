@@ -26,8 +26,8 @@ import { fetchAllData, ApiAllResponse } from "@/utils/apiUtils";
 // Chart configuration
 const chartConfig = {
   temperatura: {
-    label: "Temperatura (°C)  ",
-    color: "#a8dadc",
+    label: "Contaminación Acústica (PPM)",
+    color: "#1d3557", 
   },
 } satisfies ChartConfig;
 
@@ -39,7 +39,7 @@ const TemperaturaGraph: React.FC = () => {
     const fetchTemperaturaData = async () => {
       try {
         const data: ApiAllResponse[] = await fetchAllData(
-          "http://192.168.0.126/apis/temperatura/getAll.php"
+          "http://192.168.0.126/apis/contaminacion_acustica/getAll.php"
         );
         const formattedData = data.map((item) => ({
           date: new Date(item.fechahora).toISOString(), // Format date
@@ -58,9 +58,9 @@ const TemperaturaGraph: React.FC = () => {
     // <div className="pt-2 pb-2 grid gap-4 md:grid-cols-2 lg:grid-cols-1">
         <Card>
         <CardHeader>
-            <CardTitle>Área de Temperatura</CardTitle>
+            <CardTitle>Área de Contaminación Acústica</CardTitle>
             <CardDescription>
-            Visualización de los registros de temperatura.
+            Visualización de los registros de contaminación acústica.
             </CardDescription>
         </CardHeader>
         <CardContent>
@@ -107,7 +107,7 @@ const TemperaturaGraph: React.FC = () => {
                 Información en Tiempo Real <TrendingUp className="h-4 w-4" />
                 </div>
                 <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                Registros recientes de temperatura
+                Registros recientes de contaminación acústica
                 </div>
             </div>
             </div>
