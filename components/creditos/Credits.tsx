@@ -3,12 +3,12 @@ import React from "react";
 const teamMembers = [
   {
     name: "Dany",
-    title: "Product Manager",
+    title: "Proyect Manager",
     image: "/danyclutch.jpeg",
   },
   {
     name: "Yael",
-    title: "Senior Developer",
+    title: "Junior Developer",
     image: "/yaelclutch.jpg",
   },
 ];

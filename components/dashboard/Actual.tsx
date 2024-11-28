@@ -8,19 +8,42 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { fetchActualData } from "@/utils/apiUtils";
+import GraphAlert from "./GraphAlert";
 
 const API_CONFIG = [
   {
     url: "http://192.168.0.126/apis/temperatura/getActual.php",
     label: "Temperatura",
     unit: "°C",
-    color: "#a8dadc", // Example color for Temperatura
+    color: "#a8dadc",
+    min: 0,
+    max: 50,
+    greenRange: [15, 26], // Tuple of two numbers
+    yellowRange: [
+      [5, 14], // First yellow range
+      [27, 31], // Second yellow range
+    ],
+    redRange: [
+      [0, 4], // First red range
+      [32, 50], // Second red range
+    ],
   },
   {
     url: "http://192.168.0.126/apis/humedad/getActual.php",
     label: "Humedad",
     unit: "%",
-    color: "#add8e6", // Example color for Humedad
+    color: "#add8e6",
+    min: 0,
+    max: 100,
+    greenRange: [30, 60], // Tuple of two numbers
+    yellowRange: [
+      [20, 29],
+      [61, 70],
+    ],
+    redRange: [
+      [0, 19],
+      [71, 100],
+    ],
   },
   {
     url: "http://192.168.0.126/apis/calidad_de_aire/getActual.php",
@@ -70,7 +93,7 @@ const ActualDataCards: React.FC = () => {
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke={api.color} // Dynamic stroke color
+              stroke={api.color}
               strokeWidth="1.75"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -87,6 +110,14 @@ const ActualDataCards: React.FC = () => {
             <div className="text-2xl font-bold">
               {data[api.label] !== null ? `${data[api.label]} ${api.unit}` : "Loading..."}
             </div>
+            <GraphAlert
+              value={data[api.label] ? parseFloat(data[api.label]!) : 0}
+              min={api.min ?? 0} // Provide default fallback of 0
+              max={api.max ?? 100} // Provide default fallback of 100
+              greenRange={api.greenRange as [number, number]}
+              yellowRange={api.yellowRange as [[number, number], [number, number]]}
+              redRange={api.redRange as [[number, number], [number, number]]}
+            />
             <p className="text-xs text-muted-foreground">Medición en Tiempo Real</p>
           </CardContent>
         </Card>
