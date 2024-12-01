@@ -58,8 +58,8 @@ const API_CONFIG = [
       [101, 200],
     ],
     redRange: [
-      [201, 1000],
-      [201, 1000],
+      [201, 4000],
+      [201, 4000],
     ],
   },
   {
@@ -111,7 +111,16 @@ const ActualDataCards: React.FC = () => {
       setData(results);
     };
 
+    // Fetch data initially
     fetchAllData();
+
+    // Set interval to fetch data every 5 seconds
+    const intervalId = setInterval(() => {
+      fetchAllData();
+    }, 1000); // Adjust interval duration as needed
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -141,12 +150,14 @@ const ActualDataCards: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {data[api.label] !== null ? `${data[api.label]} ${api.unit}` : "Loading..."}
+              {data[api.label] !== null
+                ? `${data[api.label]} ${api.unit}`
+                : "Loading..."}
             </div>
             <GraphAlert
               value={data[api.label] ? parseFloat(data[api.label]!) : 0}
-              min={api.min ?? 0} // Provide default fallback of 0
-              max={api.max ?? 100} // Provide default fallback of 100
+              min={api.min ?? 0}
+              max={api.max ?? 100}
               greenRange={api.greenRange as [number, number]}
               yellowRange={api.yellowRange as [[number, number], [number, number]]}
               redRange={api.redRange as [[number, number], [number, number]]}
